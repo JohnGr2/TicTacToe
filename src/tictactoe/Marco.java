@@ -9,7 +9,7 @@ import javax.swing.JButton;
 public class Marco extends javax.swing.JFrame {
 
     private static int xo = 0, contador = 0;
-    private ImageIcon x = new ImageIcon(getClass().getResource("x.jpg"));
+    private ImageIcon x = new ImageIcon(getClass().getResource("x.png"));
     private ImageIcon o = new ImageIcon(getClass().getResource("o.png"));
 
     public Marco() {
@@ -242,20 +242,20 @@ public class Marco extends javax.swing.JFrame {
                     .addComponent(cas1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cas3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cas5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cas6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cas4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cas7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cas8, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cas9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cas9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cas7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(99, 178, 193));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turno de: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turno de: ", 0, 0, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -347,9 +347,15 @@ public class Marco extends javax.swing.JFrame {
 
         getContentPane().add(Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        FinJuego.setBackground(new java.awt.Color(255, 255, 0));
+        FinJuego.setBackground(new java.awt.Color(0, 102, 153));
         FinJuego.setPreferredSize(new java.awt.Dimension(400, 500));
 
+        ganar.setEditable(false);
+        ganar.setBackground(new java.awt.Color(255, 255, 51));
+        ganar.setFont(new java.awt.Font("Lithos Pro Regular", 1, 18)); // NOI18N
+        ganar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        restart.setFont(new java.awt.Font("LCD", 1, 18)); // NOI18N
         restart.setText("Volver a Jugar");
         restart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,6 +363,7 @@ public class Marco extends javax.swing.JFrame {
             }
         });
 
+        reiniciar.setFont(new java.awt.Font("LCD", 1, 18)); // NOI18N
         reiniciar.setText("Reiniciar");
         reiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,6 +371,7 @@ public class Marco extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("LCD", 1, 18)); // NOI18N
         jButton5.setText("Cerrar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,17 +384,16 @@ public class Marco extends javax.swing.JFrame {
         FinJuegoLayout.setHorizontalGroup(
             FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FinJuegoLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
                 .addGroup(FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FinJuegoLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(ganar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FinJuegoLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(reiniciar)
-                            .addComponent(restart, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(reiniciar)
+                    .addComponent(jButton5)
+                    .addComponent(restart))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FinJuegoLayout.createSequentialGroup()
+                .addContainerGap(86, Short.MAX_VALUE)
+                .addComponent(ganar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
 
         FinJuegoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, reiniciar, restart});
@@ -394,9 +401,9 @@ public class Marco extends javax.swing.JFrame {
         FinJuegoLayout.setVerticalGroup(
             FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FinJuegoLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(112, 112, 112)
                 .addComponent(ganar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(43, 43, 43)
                 .addComponent(restart, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(reiniciar)

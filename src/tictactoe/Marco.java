@@ -4,95 +4,99 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- * @author JGran
+ * @author John Granados
  */
 public class Marco extends javax.swing.JFrame {
-    
-    private static int xo = 0 , contador = 0;
-    private ImageIcon x = new ImageIcon(getClass().getResource("x.png"));
+
+    private static int xo = 0, contador = 0;
+    private ImageIcon x = new ImageIcon(getClass().getResource("x.jpg"));
     private ImageIcon o = new ImageIcon(getClass().getResource("o.png"));
-    
+
     public Marco() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("XO");
         labelXO.setIcon(x);
-        FinJuego.hide();
-        Juego.show();
-    }
-    
-    //------------------------------Métodos-----------------------------------
-
-    //------------------------------Icono X o O -----------------------------------
-    
-    private void setIconXO(JButton bn){
         
-        if (xo==0) {
+        FinJuego.hide();
+        Juego.hide();
+        IniciarJuego.show();
+        setResizable(false);
+    }
+
+    private void setIconXO(JButton bn) {
+
+        if (xo == 0) {
             bn.setIcon(x);
             xo = 1;
             contador++;
             labelXO.setIcon(o);
-        } else{
+            bn.setEnabled(false);
+            Jugador.setText(Jugador2.getText());
+        } else {
             bn.setIcon(o);
             xo = 0;
             contador++;
             labelXO.setIcon(x);
+            bn.setEnabled(false);
+            Jugador.setText(Jugador1.getText());
         }
     }
-    
-    //----------------------------Fin de juego --------------------------------
-    
-    private void FindeJuego(){
+
+    private void FindeJuego() {
         xo = 0;
         contador = 0;
         cas1.setIcon(null);
+        cas1.setEnabled(true);
         cas2.setIcon(null);
+        cas2.setEnabled(true);
         cas3.setIcon(null);
+        cas3.setEnabled(true);
         cas4.setIcon(null);
+        cas4.setEnabled(true);
         cas5.setIcon(null);
+        cas5.setEnabled(true);
         cas6.setIcon(null);
+        cas6.setEnabled(true);
         cas7.setIcon(null);
+        cas7.setEnabled(true);
         cas8.setIcon(null);
+        cas8.setEnabled(true);
         cas9.setIcon(null);
+        cas9.setEnabled(true);
         labelXO.setIcon(x);
         FinJuego.show();
         Juego.hide();
-        
+        Jugador.setText(Jugador1.getText());
+
     }
-    
-    //-------------------------Cas Click--------------------------------------
-    
-    private void CasClick(JButton bn, JButton a1, JButton a2, JButton b1, JButton b2, JButton c1, JButton c2){
-        
-        setIconXO(bn);
-        if (
-                bn.getIcon().equals(a1.getIcon()) && bn.getIcon().equals(a2.getIcon()) ||
-                bn.getIcon().equals(b1.getIcon()) && bn.getIcon().equals(b2.getIcon()) ||
-                bn.getIcon().equals(c1.getIcon()) && bn.getIcon().equals(c2.getIcon())
-                ) {
-            FindeJuego();
+
+    private void CasClick(JButton bn, JButton a1, JButton a2, JButton b1, JButton b2, JButton c1, JButton c2) {
+
+        if (bn.getIcon().equals(a1.getIcon()) && bn.getIcon().equals(a2.getIcon())
+                || bn.getIcon().equals(b1.getIcon()) && bn.getIcon().equals(b2.getIcon())
+                || bn.getIcon().equals(c1.getIcon()) && bn.getIcon().equals(c2.getIcon())) {
+
             if (bn.getIcon().equals(x)) {
-                ganar.setText("X ganó");
-            } else{
-                ganar.setText("O ganó");
+                ganar.setText(Jugador1.getText()+" ganó");
+            } else {
+                ganar.setText(Jugador2.getText()+" ganó");
             }
-            
-            
+            FindeJuego();
+
         }
-        
+
         Empate();
     }
     
-    //-----------------------------------Empate--------------------------------
-    
-    private void Empate(){
-        
-        if (contador==9) {
+    private void Empate() {
+
+        if (contador == 9) {
             FindeJuego();
             ganar.setText("Empate");
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +106,7 @@ public class Marco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         Juego = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         cas1 = new javax.swing.JButton();
@@ -115,19 +120,34 @@ public class Marco extends javax.swing.JFrame {
         cas9 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         labelXO = new javax.swing.JLabel();
+        Jugador = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         FinJuego = new javax.swing.JPanel();
         ganar = new javax.swing.JTextField();
+        restart = new javax.swing.JButton();
+        reiniciar = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         IniciarJuego = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Jugador1 = new javax.swing.JTextField();
+        Jugador2 = new javax.swing.JTextField();
+        Start = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         Bienvenida = new javax.swing.JPanel();
 
+        jButton3.setText("jButton3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Juego.setBackground(new java.awt.Color(0, 255, 51));
+        Juego.setBackground(new java.awt.Color(2, 94, 117));
         Juego.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(4, 124, 141));
 
         cas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +158,48 @@ public class Marco extends javax.swing.JFrame {
         cas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cas2ActionPerformed(evt);
+            }
+        });
+
+        cas3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas3ActionPerformed(evt);
+            }
+        });
+
+        cas4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas4ActionPerformed(evt);
+            }
+        });
+
+        cas5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas5ActionPerformed(evt);
+            }
+        });
+
+        cas6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas6ActionPerformed(evt);
+            }
+        });
+
+        cas7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas7ActionPerformed(evt);
+            }
+        });
+
+        cas8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas8ActionPerformed(evt);
+            }
+        });
+
+        cas9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cas9ActionPerformed(evt);
             }
         });
 
@@ -152,35 +214,34 @@ public class Marco extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cas1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cas7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cas8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cas9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addComponent(cas2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cas3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cas4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cas5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cas6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cas2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cas3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cas1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(cas1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cas3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cas5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cas6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,25 +254,54 @@ public class Marco extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(51, 0, 255));
+        jPanel2.setBackground(new java.awt.Color(99, 178, 193));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Turno de: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addComponent(labelXO, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addGap(66, 66, 66))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelXO, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(labelXO, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(Jugador, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE))
         );
+
+        jButton1.setFont(new java.awt.Font("LCD", 3, 18)); // NOI18N
+        jButton1.setText("Reiniciar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("LCD", 3, 18)); // NOI18N
+        jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("LCD", 3, 18)); // NOI18N
+        jButton4.setText("Cerrar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JuegoLayout = new javax.swing.GroupLayout(Juego);
         Juego.setLayout(JuegoLayout);
@@ -220,60 +310,197 @@ public class Marco extends javax.swing.JFrame {
             .addGroup(JuegoLayout.createSequentialGroup()
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JuegoLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JuegoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(JuegoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
+
+        JuegoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton4});
+
         JuegoLayout.setVerticalGroup(
             JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JuegoLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        JuegoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton4});
 
         getContentPane().add(Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FinJuego.setBackground(new java.awt.Color(255, 255, 0));
         FinJuego.setPreferredSize(new java.awt.Dimension(400, 500));
 
+        restart.setText("Volver a Jugar");
+        restart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restartActionPerformed(evt);
+            }
+        });
+
+        reiniciar.setText("Reiniciar");
+        reiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reiniciarActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Cerrar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FinJuegoLayout = new javax.swing.GroupLayout(FinJuego);
         FinJuego.setLayout(FinJuegoLayout);
         FinJuegoLayout.setHorizontalGroup(
             FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FinJuegoLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(ganar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FinJuegoLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(ganar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FinJuegoLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addGroup(FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reiniciar)
+                            .addComponent(restart, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5))))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
+
+        FinJuegoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, reiniciar, restart});
+
         FinJuegoLayout.setVerticalGroup(
             FinJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FinJuegoLayout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addComponent(ganar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(restart, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(reiniciar)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
+
+        FinJuegoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, reiniciar, restart});
 
         getContentPane().add(FinJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        IniciarJuego.setBackground(new java.awt.Color(255, 51, 51));
         IniciarJuego.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\JGran\\Desktop\\almighty-tic-tac-toe-2015.png")); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel2.setText("Jugador 1: ");
+
+        jLabel3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel3.setText("Jugador 2: ");
+
+        Jugador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Jugador1KeyReleased(evt);
+            }
+        });
+
+        Jugador2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Jugador2KeyReleased(evt);
+            }
+        });
+
+        Start.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        Start.setText("¡Jugar!");
+        Start.setEnabled(false);
+        Start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartActionPerformed(evt);
+            }
+        });
+
+        jButton6.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        jButton6.setText("Cerrar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout IniciarJuegoLayout = new javax.swing.GroupLayout(IniciarJuego);
         IniciarJuego.setLayout(IniciarJuegoLayout);
         IniciarJuegoLayout.setHorizontalGroup(
             IniciarJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(IniciarJuegoLayout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(IniciarJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IniciarJuegoLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(Jugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(IniciarJuegoLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(IniciarJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6)
+                            .addComponent(Jugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Start, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(IniciarJuegoLayout.createSequentialGroup()
+                        .addGroup(IniciarJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IniciarJuegoLayout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
+
+        IniciarJuegoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Start, jButton6});
+
+        IniciarJuegoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Jugador1, Jugador2});
+
         IniciarJuegoLayout.setVerticalGroup(
             IniciarJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(IniciarJuegoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Jugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Jugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Start, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        IniciarJuegoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Start, jButton6});
 
         getContentPane().add(IniciarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -297,15 +524,117 @@ public class Marco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas1ActionPerformed
-      
+        setIconXO(cas1);
         CasClick(cas1, cas2, cas3, cas5, cas9, cas4, cas7);
         // TODO add your handling code here:
     }//GEN-LAST:event_cas1ActionPerformed
 
     private void cas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas2ActionPerformed
-        CasClick(cas2, cas1, cas3, cas5, cas9, cas4, cas7);
+        setIconXO(cas2);
+        CasClick(cas2, cas1, cas3, cas3, cas1, cas5, cas8);
 // TODO add your handling code here:
     }//GEN-LAST:event_cas2ActionPerformed
+
+    private void cas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas3ActionPerformed
+        setIconXO(cas3);
+        CasClick(cas3, cas6, cas9, cas5, cas7, cas2, cas1); // TODO add your handling code here:
+    }//GEN-LAST:event_cas3ActionPerformed
+
+    private void cas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas4ActionPerformed
+        setIconXO(cas4);
+        CasClick(cas4, cas1, cas7, cas7, cas1, cas5, cas6);        // TODO add your handling code here:
+    }//GEN-LAST:event_cas4ActionPerformed
+
+    private void cas5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas5ActionPerformed
+        setIconXO(cas5);
+        CasClick(cas5, cas2, cas6, cas1, cas9, cas4, cas6);
+        CasClick(cas5, cas2, cas6, cas1, cas9, cas7, cas3); // TODO add your handling code here:
+    }//GEN-LAST:event_cas5ActionPerformed
+
+    private void cas6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas6ActionPerformed
+        setIconXO(cas6);
+        CasClick(cas6, cas3, cas9, cas4, cas5, cas9, cas3);         // TODO add your handling code here:
+    }//GEN-LAST:event_cas6ActionPerformed
+
+    private void cas7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas7ActionPerformed
+        setIconXO(cas7);
+        CasClick(cas7, cas4, cas1, cas5, cas3, cas8, cas9);  // TODO add your handling code here:
+    }//GEN-LAST:event_cas7ActionPerformed
+
+    private void cas8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas8ActionPerformed
+        setIconXO(cas8);
+        CasClick(cas8, cas7, cas9, cas9, cas7, cas5, cas2); // TODO add your handling code here:
+    }//GEN-LAST:event_cas8ActionPerformed
+
+    private void cas9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cas9ActionPerformed
+        setIconXO(cas9);
+        CasClick(cas9, cas8, cas7, cas5, cas1, cas3, cas6);
+    }//GEN-LAST:event_cas9ActionPerformed
+
+    private void restartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartActionPerformed
+       FinJuego.hide();
+       Juego.show();// TODO add your handling code here:
+       
+    }//GEN-LAST:event_restartActionPerformed
+
+    private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reiniciarActionPerformed
+        IniciarJuego.show();
+        FinJuego.hide();
+        Jugador1.setText("");
+        Jugador2.setText("");
+        Start.setEnabled(false);// TODO add your handling code here:
+    }//GEN-LAST:event_reiniciarActionPerformed
+
+    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
+       IniciarJuego.hide();
+       Juego.show();// TODO add your handling code here:
+       Jugador.setText(Jugador1.getText());
+    }//GEN-LAST:event_StartActionPerformed
+
+    private void Jugador1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jugador1KeyReleased
+        if (Jugador1.getText().equals("") || Jugador2.getText().equals("") ) {
+            Start.setEnabled(false);
+        } else{
+            Start.setEnabled(true);
+        }
+ // TODO add your handling code here:
+    }//GEN-LAST:event_Jugador1KeyReleased
+
+    private void Jugador2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jugador2KeyReleased
+         if (Jugador1.getText().equals("") || Jugador2.getText().equals("") ) {
+            Start.setEnabled(false);
+        } else{
+            Start.setEnabled(true);
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_Jugador2KeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      FindeJuego();
+      Juego.show();
+      FinJuego.hide();
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        FindeJuego();
+        IniciarJuego.show();
+        FinJuego.hide();
+        Jugador1.setText("");
+        Jugador2.setText("");
+        Start.setEnabled(false); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,6 +676,10 @@ public class Marco extends javax.swing.JFrame {
     private javax.swing.JPanel FinJuego;
     private javax.swing.JPanel IniciarJuego;
     private javax.swing.JPanel Juego;
+    private javax.swing.JLabel Jugador;
+    private javax.swing.JTextField Jugador1;
+    private javax.swing.JTextField Jugador2;
+    private javax.swing.JButton Start;
     private javax.swing.JButton cas1;
     private javax.swing.JButton cas2;
     private javax.swing.JButton cas3;
@@ -357,8 +690,19 @@ public class Marco extends javax.swing.JFrame {
     private javax.swing.JButton cas8;
     private javax.swing.JButton cas9;
     private javax.swing.JTextField ganar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelXO;
+    private javax.swing.JButton reiniciar;
+    private javax.swing.JButton restart;
     // End of variables declaration//GEN-END:variables
 }
